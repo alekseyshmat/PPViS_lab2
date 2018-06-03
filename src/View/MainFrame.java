@@ -14,19 +14,7 @@ import View.menuListeners.*;
 
 public class MainFrame {
     public JFrame frame;
-    public JToolBar tool;
-    private MainTable mainTable;
-    private DBTeacher dbTeacher;
     private Controller controller;
-
-    private JMenuBar menuBa;
-    private JMenuItem openItem;
-    private JMenuItem newItem;
-    private JMenuItem addItem;
-    private JMenuItem deleteItem;
-    private JMenuItem searchItem;
-    private JMenuItem saveItem;
-    private JMenuItem exitItem;
 
     public MainFrame() {
         frame = new JFrame();
@@ -37,14 +25,14 @@ public class MainFrame {
         frame.setResizable(false);
         frame.setVisible(true);
 
-        mainTable = new MainTable();
-        dbTeacher = new DBTeacher();
+        MainTable mainTable = new MainTable();
+        DBTeacher dbTeacher = new DBTeacher();
         controller = new Controller(dbTeacher, mainTable, this);
 
-        menuBa = addJMenuBar();
+        JMenuBar menuBa = addJMenuBar();
         frame.setJMenuBar(menuBa);
 
-        tool = addToolBar();
+        JToolBar tool = addToolBar();
         frame.add(tool, BorderLayout.NORTH);
     }
 
@@ -92,8 +80,9 @@ public class MainFrame {
         toolBar.add(openButton);
         toolBar.add(newButton);
         toolBar.add(addButton);
-        toolBar.add(deleteButton);
         toolBar.add(searchButton);
+        toolBar.add(deleteButton);
+        toolBar.add(saveButton);
 
         toolBar.setFloatable(false);
         toolBar.setVisible(true);
@@ -110,44 +99,43 @@ public class MainFrame {
         JMenu changeMenu = new JMenu("Изменить");
         JMenu exitMenu = new JMenu("Выход");
 
-        newItem = new JMenuItem("Новый файл");
+        JMenuItem newItem = new JMenuItem("Новый файл");
         newItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_DOWN_MASK));
         NewFileListener newFileListener = new NewFileListener(controller);
         newItem.addActionListener(newFileListener);
         fileMenu.add(newItem);
 
-        openItem = new JMenuItem("Открыть");
+        JMenuItem openItem = new JMenuItem("Открыть");
         openItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_DOWN_MASK));
         OpenFileListener openFileListener = new OpenFileListener(controller);
         openItem.addActionListener(openFileListener);
         fileMenu.add(openItem);
 
-        saveItem = new JMenuItem("Сохранить");
+        JMenuItem saveItem = new JMenuItem("Сохранить");
         saveItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_DOWN_MASK));
         SaveFileListener saveFileListener = new SaveFileListener(controller);
         saveItem.addActionListener(saveFileListener);
-
         fileMenu.add(saveItem);
 
-        addItem = new JMenuItem("Добавить");
+        JMenuItem addItem = new JMenuItem("Добавить");
         addItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_DOWN_MASK));
         AddListener addListener = new AddListener(controller);
         addItem.addActionListener(addListener);
         changeMenu.add(addItem);
 
-        searchItem = new JMenuItem("Найти");
+        JMenuItem searchItem = new JMenuItem("Найти");
         searchItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, InputEvent.CTRL_DOWN_MASK));
         SearchListener searchListener = new SearchListener(controller);
         searchItem.addActionListener(searchListener);
         changeMenu.add(searchItem);
 
-        deleteItem = new JMenuItem("Удалить");
+        JMenuItem deleteItem = new JMenuItem("Удалить");
         deleteItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.CTRL_DOWN_MASK));
         DeleteListener deleteListener = new DeleteListener(controller);
         deleteItem.addActionListener(deleteListener);
         changeMenu.add(deleteItem);
 
-        exitItem = new JMenuItem("Выход");
+        JMenuItem exitItem = new JMenuItem("Выход");
         exitItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_DOWN_MASK));
         exitItem.addActionListener(new ActionListener() {
             @Override
