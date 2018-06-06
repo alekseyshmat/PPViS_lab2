@@ -49,13 +49,10 @@ public class OpenFileListener implements ActionListener {
                 controller.created();
                 controller.viewTeachers(mainTable, controller.getListOfTeachers());
 
-
             } catch (SAXException | ParserConfigurationException | IOException eSAX) {
                 eSAX.printStackTrace();
             }
-
         }
     }
-
 }
 

@@ -35,25 +35,32 @@ public class AddFrame {
     public static String[] academicTitleItems = {
             "профессор",
             "доцент",
-            "ассистент"
+            "ассистент",
+            "преподаватель",
+            "начальник цикла"
     };
 
-    public static String[] academicDeagreeItems = {
-            "доктор наук",
-            "кандидат наук",
+    private static String[] academicDeagreeItems = {
+            "отсутсвует",
+            "доктор техн. наук",
+            "кандидат техн. наук",
+            "кандидат физ.-матем. наук",
+            "кандидат истор. наук",
+            "кандидат фил. наук",
+            "кандидат военных наук"
     };
 
-    public static String[] fituChairItems = {
+    private static String[] fituChairItems = {
             "ВМиП",
-            "ГД",
+            "гуманитарных дисциплин",
             "ИИТ",
             "ИТАС",
             "СУ",
             "ТОЭ"
     };
 
-    public static String[] fksisChairItems = {
-            "ВМ",
+    private static String[] fksisChairItems = {
+            "высшей математики",
             "информатики",
             "ПОИТ",
             "Физики",
@@ -62,7 +69,7 @@ public class AddFrame {
             "ЭВС"
     };
 
-    public static String[] fkpChairItems = {
+    private static String[] fkpChairItems = {
             "ИиКГ",
             "ИПиЭ",
             "ИЯ1",
@@ -70,26 +77,26 @@ public class AddFrame {
             "ЭТиТ"
     };
 
-    public static String[] iefChairItems = {
+    private static String[] iefChairItems = {
             "ЭИ",
             "экономики",
             "менеджмента",
             "ИЯ2"
     };
 
-    public static String[] freChairItems = {
+    private static String[] freChairItems = {
             "электроники",
             "ИР",
             "МиНЭ"
     };
 
-    public static String[] fikChairItems = {
-            "ЗИ",
+    private static String[] fikChairItems = {
+            "защиты информации",
             "ИТ",
             "физвоспитания"
     };
 
-    public static String[] vfChairItems = {
+    private static String[] vfChairItems = {
             "связи",
             "тактики",
             "РЭТ ВВС"
@@ -169,11 +176,12 @@ public class AddFrame {
         JPanel panelCon = new JPanel();
         panelCon.setLayout(new BoxLayout(panelCon, BoxLayout.Y_AXIS));
 
-
         JLabel labelSecondName = new JLabel("Фамилия:");
         textSecondName = new JTextField();
+        labelSecondName.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         JLabel labelFirstName = new JLabel("Имя:");
+        labelFirstName.setAlignmentX(Component.LEFT_ALIGNMENT);
         textFirstName = new JTextField();
 
         JLabel labelThirdName = new JLabel("Отчество:");
@@ -201,7 +209,7 @@ public class AddFrame {
 
         JLabel labelAcademicDegree = new JLabel("Ученая степень:");
         academicDegree = new JComboBox(academicDeagreeItems);
-        academicDegree.setSelectedIndex(-1);
+        academicDegree.setSelectedIndex(0);
 
         JLabel labelWorkExperience = new JLabel("Стаж работы:");
         textWorkExperience = new JTextField();
@@ -236,6 +244,7 @@ public class AddFrame {
         teacher.setAcademicTitle(academicTitle.getSelectedItem().toString());
         teacher.setAcademicDegree(academicDegree.getSelectedItem().toString());
         teacher.setWorkExperience(Integer.parseInt(textWorkExperience.getText()));
+
         return teacher;
     }
 

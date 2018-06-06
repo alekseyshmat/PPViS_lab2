@@ -79,7 +79,7 @@ public class XMLDomParser {
                 node.appendChild(academicTitle);
 
                 Element academicDegree = document.createElement(View.menuListeners.XMLConst.ACADEMIC_DEGREE);
-                academicDegree.setTextContent(teacher.getAcademicDegree().toString());
+                academicDegree.setTextContent(teacher.getAcademicDegree());
                 node.appendChild(academicDegree);
 
                 Element workExperience = document.createElement(View.menuListeners.XMLConst.WORK_EXPERIENCE);
@@ -94,5 +94,4 @@ public class XMLDomParser {
         }
         return null;
     }
-
 }

@@ -66,7 +66,5 @@ public class Controller {
 
     public void deleteInSearch(List<Teacher> searchTeachers) {
         db.deleteInSearch(searchTeachers);
-
     }
-
 }

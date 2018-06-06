@@ -15,7 +15,6 @@ public class SaveFileListener implements ActionListener {
         fileChooser = new JFileChooser();
         Files files = new Files();
         fileChooser.setFileFilter(files);
-
     }
 
     @Override

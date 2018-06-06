@@ -84,6 +84,5 @@ public class DBTeacher {
 
     public void deleteInSearch(List<Teacher> searchTeachers) {
         recordList.removeAll(searchTeachers);
-
     }
 }

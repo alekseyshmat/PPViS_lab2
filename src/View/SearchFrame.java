@@ -20,7 +20,7 @@ public class SearchFrame {
 
     private DBTeacher dbTeacher;
     private Controller controller;
-    private List<Teacher> searchList;
+    public List<Teacher> searchList;
 
     private JTextField textSecondName;
     private JTextField textFromWorkExperience;
@@ -37,9 +37,9 @@ public class SearchFrame {
 
     public static String[] allChairItems = {
             "ВМиП",
-            "ВМ",
-            "ГД",
-            "ЗИ",
+            "высшей математики",
+            "гуманитарных дисциплин",
+            "защиты информации",
             "ИиКГ",
             "ИИТ",
             "информатики",

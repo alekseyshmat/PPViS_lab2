@@ -17,6 +17,8 @@ public class MainTable extends JTable {
     private JScrollPane scrollPane;
     public JPanel pagePanel;
 
+    private SearchFrame searchFrame;
+
     private int maxRecords;
     private int curPage;
     private int lastPage;
@@ -25,14 +27,13 @@ public class MainTable extends JTable {
     private JButton previousButton;
     private JButton lastButton;
     private JButton firstButton;
-    private JButton listButton;
 
     private JLabel labelNumberOfRecords;
     private JLabel labelRecordsPage;
     private JTextField textRecordsPage;
 
     private DefaultTableModel tableModel;
-    private String[] titles = {"ФИО", "Факультет", "Кафедра", "Ученое звание", "Ученая степень", "Стаж работы"};
+    private String[] titles = {"ФИО", "Факультет", "Кафедра", "Ученое звание", "Ученая степень", "Стаж"};
 
     public MainTable() {
         create = false;
@@ -149,10 +150,10 @@ public class MainTable extends JTable {
         firstButton = new JButton("Первая");
         firstButton.setEnabled(false);
 
-        buttonPanel.add(nextButton);
-        buttonPanel.add(previousButton);
-        buttonPanel.add(lastButton);
         buttonPanel.add(firstButton);
+        buttonPanel.add(previousButton);
+        buttonPanel.add(nextButton);
+        buttonPanel.add(lastButton);
         buttonPanel.add(labelNumberOfRecords);
         buttonPanel.add(labelRecordsPage);
         buttonPanel.add(textRecordsPage);
@@ -168,11 +169,19 @@ public class MainTable extends JTable {
         table = new JTable(tableModel);
 
         scrollPane = new JScrollPane(table);
-        table.setEnabled(true);
+        table.setEnabled(false);
 
-        TableColumn tableColumn = null;
-        tableColumn = table.getColumnModel().getColumn(0);
-        tableColumn.setPreferredWidth(150);
+        TableColumn tableColumn0;
+        tableColumn0 = table.getColumnModel().getColumn(0);
+        tableColumn0.setMinWidth(120);
+
+        TableColumn tableColumn1;
+        tableColumn1 = table.getColumnModel().getColumn(1);
+        tableColumn1.setMaxWidth(70);
+
+        TableColumn tableColumn5;
+        tableColumn5 = table.getColumnModel().getColumn(5);
+        tableColumn5.setMaxWidth(50);
 
         curPage = 1;
         lastPage = 1;
@@ -230,5 +239,4 @@ public class MainTable extends JTable {
         curPage = 1;
         viewPage(1, teachers);
     }
-
 }
